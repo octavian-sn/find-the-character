@@ -4,8 +4,12 @@
 
 body {
   margin: 0;
-  background-color: #f2e2d4;
+  background-color: #f2d4d4;
 }
 
 #root {
+  margin: 0 auto;
+}
+#image {
+  width: 100%;
 }
