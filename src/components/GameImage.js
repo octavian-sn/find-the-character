@@ -3,38 +3,33 @@ import image from '../assets/picture.jpg';
 import { writeData, getData } from '../firebase/config';
 
 function GameImage() {
-  function printMousePos({
+  function checkPosition({
     nativeEvent: { offsetX, offsetY },
     target: { width, height },
   }) {
-    const data = {
-      offsetX,
-      offsetY,
-      width,
-      height,
-      devicePixelRatio,
-      xLeft: width * 0.1709,
-      xRight: width * 0.2194,
-      yTop: width * 0.7402,
-      yBottom: width * 0.8366,
+    const mouseClick = {
+      x: offsetX,
+      y: offsetY,
     };
-    const xLeft = width * 0.1725;
-    const xRight = width * 0.2205;
-    const yTop = height * 0.6325;
-    const yBottom = height * 0.7622;
+    const margin = {
+      left: width * 0.1725,
+      right: width * 0.2205,
+      top: height * 0.6325,
+      bottom: height * 0.7622,
+    };
     if (
-      offsetX > xLeft &&
-      offsetX < xRight &&
-      offsetY > yTop &&
-      offsetY < yBottom
+      mouseClick.x > margin.left &&
+      mouseClick.x < margin.right &&
+      mouseClick.y > margin.top &&
+      mouseClick.y < margin.bottom
     ) {
-      console.log(data);
+      console.log(true);
     }
   }
 
   return (
     <div className="game-image">
-      <img onClick={printMousePos} src={image} id="image" />
+      <img onClick={checkPosition} src={image} id="image" />
     </div>
   );
 }
