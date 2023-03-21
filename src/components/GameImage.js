@@ -3,12 +3,34 @@ import image from '../assets/picture.jpg';
 import { writeData, getData } from '../firebase/config';
 
 function GameImage() {
-  function printMousePos(event) {
-    // console.log('clientX: ' + event.clientX + ' - clientY: ' + event.clientY);
-    console.log(event);
+  function printMousePos({
+    nativeEvent: { offsetX, offsetY },
+    target: { width, height },
+  }) {
+    const data = {
+      offsetX,
+      offsetY,
+      width,
+      height,
+      devicePixelRatio,
+      xLeft: width * 0.1709,
+      xRight: width * 0.2194,
+      yTop: width * 0.7402,
+      yBottom: width * 0.8366,
+    };
+    const xLeft = width * 0.1725;
+    const xRight = width * 0.2205;
+    const yTop = height * 0.6325;
+    const yBottom = height * 0.7622;
+    if (
+      offsetX > xLeft &&
+      offsetX < xRight &&
+      offsetY > yTop &&
+      offsetY < yBottom
+    ) {
+      console.log(data);
+    }
   }
-
-  console.log(getData());
 
   return (
     <div className="game-image">

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import GameImage from './components/GameImage';
+import Header from './components/Header';
 
 function App() {
   return (
     <div id="app">
-      <h1>Find </h1>
+      <Header />
       <GameImage />
     </div>
   );
