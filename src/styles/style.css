@@ -4,16 +4,76 @@
 
 body {
   margin: 0;
-  background-color: #f2d4d4;
+  background-color: #ffffff;
+}
+/* Main App component */
+#app {
+  position: relative;
 }
 
-#root {
-  margin: 0 auto;
-}
+/* Header */
 header {
-  height: 60px;
+  margin: 0 auto;
+  min-height: 60px;
+  color: #2c3c48;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 800px;
 }
-
+h1 {
+  font-family: 'Delicious Handrawn', cursive;
+  font-size: 3rem;
+  letter-spacing: 5px;
+  margin: 0;
+}
+.characters-icon {
+  background-color: transparent;
+  border: none;
+  background-image: url('../assets/button.png');
+  background-position: center;
+  background-size: cover;
+  height: 3rem;
+  width: 3rem;
+  cursor: pointer;
+  color: white;
+  font-size: 2rem;
+  font-family: 'Delicious Handrawn', cursive;
+  transition: transform 200ms;
+}
+.characters-icon:hover {
+  transform: rotateZ(15deg);
+}
+/* Game Image Component */
 #image {
   width: 100%;
+  border-top: 4px solid #2c3c48;
+  border-bottom: 4px solid #2c3c48;
+}
+/* PopUp */
+.pop-up {
+  border: 1px solid #2c3c48;
+  border-width: 4px 1px;
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  min-height: 10%;
+  min-width: 10%;
+  top: 260px;
+  left: 110px;
+}
+.pop-up li {
+  font-size: 2vw;
+  list-style-type: none;
+  padding: 3px;
+  padding: 3px 10px;
+  font-family: 'Delicious Handrawn';
+  cursor: pointer;
+}
+.pop-up li:hover {
+  background-color: #2c3c4871;
+}
+@media screen and (max-width: 600px) {
+  .pop-up li {
+    font-size: 17px;
+  }
 }

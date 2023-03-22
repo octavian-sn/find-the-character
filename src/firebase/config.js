@@ -1,10 +1,13 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
-import { getDatabase, ref, set, onValue } from 'firebase/database';
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import {
+  getFirestore,
+  collection,
+  getDoc,
+  getDocs,
+  setDoc,
+  doc,
+} from 'firebase/firestore/lite';
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: 'AIzaSyBdZRD5nqJGr2SoGGb1GYZdpj82eOajlp8',
   authDomain: 'find-the-character-27c03.firebaseapp.com',
@@ -18,24 +21,35 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
-const db = getDatabase();
-const reference = ref(db, 'test');
-
-function writeData(name, email) {
-  set(reference, {
-    username: name,
-    email: email,
-  });
+async function writeData(data) {
+  const characterRef = collection(db, 'characters');
+  try {
+    await setDoc(doc(characterRef, data.name), data);
+  } catch (e) {
+    console.error('Error adding document: ', e);
+  }
 }
 
-function getData() {
-  let value = null;
-  onValue(reference, (snapshot) => {
-    const data = snapshot.val();
-    value = data;
-  });
-  return value;
+async function getCharacters() {
+  const querySnapshot = await getDocs(collection(db, 'characters'));
+  let arr = [];
+  querySnapshot.forEach((doc) => arr.push(doc.data()));
+  console.log(arr);
+  return arr;
 }
 
-export { writeData, getData };
+// getCharacters();
+
+async function getData(name) {
+  const docRef = doc(db, 'characters', name);
+  const docSnap = await getDoc(docRef);
+  if (docSnap.exists()) {
+    console.log(docSnap.data());
+  } else {
+    console.log('Error, no document.');
+  }
+}
+
+export { writeData, getData, getCharacters };
