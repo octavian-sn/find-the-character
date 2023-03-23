@@ -46,7 +46,7 @@ async function getData(name) {
   const docRef = doc(db, 'characters', name);
   const docSnap = await getDoc(docRef);
   if (docSnap.exists()) {
-    console.log(docSnap.data());
+    return docSnap.data();
   } else {
     console.log('Error, no document.');
   }

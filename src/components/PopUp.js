@@ -1,4 +1,4 @@
-function PopUp({ characters, clickData }) {
+function PopUp({ characters, clickData, checkPosition }) {
   const coordinates = {
     top: clickData.pageY,
     left: clickData.pageX,
@@ -6,7 +6,15 @@ function PopUp({ characters, clickData }) {
 
   const options = characters
     .filter((item) => item.found === false)
-    .map((item, index) => <li key={index}>{item.name}</li>);
+    .map((item, index) => (
+      <li
+        onClick={() => checkPosition(item.name, clickData)}
+        key={index}
+        id={item.name}
+      >
+        {item.name}
+      </li>
+    ));
 
   return (
     <div style={coordinates} className="pop-up">
