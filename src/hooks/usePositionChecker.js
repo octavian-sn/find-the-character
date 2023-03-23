@@ -1,6 +1,10 @@
+import { useState } from 'react';
 import { getData, writeData, getCharacters } from '../firebase/config';
+import rias from '../assets/rias.png';
+import lelouch from '../assets/lelouch.png';
+import ulquiorra from '../assets/ulquiorra.png';
 
-export default function positionChecker() {
+export default function usePositionChecker() {
   // Function used to add character positions to firebase
   function addCharacters({
     nativeEvent: { offsetX, offsetY },
@@ -22,6 +26,25 @@ export default function positionChecker() {
     });
     number++;
   }
+  // Characters used for passing name arguments, checking which character is found and image tooltip
+  const [characters, setCharacters] = useState([
+    {
+      name: 'Rias Gremory',
+      found: false,
+      source: rias,
+    },
+    {
+      name: 'Lelouch Vi Britannia',
+      found: false,
+      source: lelouch,
+    },
+    {
+      name: 'Ulquiorra Cifer',
+      found: false,
+      source: ulquiorra,
+    },
+  ]);
+
   // Hard-coded-values
   // function checkPosition({
   //   nativeEvent: { offsetX, offsetY },
@@ -70,5 +93,5 @@ export default function positionChecker() {
     }
   }
 
-  return { checkPosition, addCharacters };
+  return { checkPosition, addCharacters, setCharacters, characters };
 }

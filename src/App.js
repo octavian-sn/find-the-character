@@ -2,33 +2,12 @@ import React, { useState } from 'react';
 import GameImage from './components/GameImage';
 import Header from './components/Header';
 import PopUp from './components/PopUp';
-import positionChecker from './hooks/positionChecker';
-import rias from './assets/rias.png';
-import lelouch from './assets/lelouch.png';
-import ulquiorra from './assets/ulquiorra.png';
-import { async } from '@firebase/util';
+import usePositionChecker from './hooks/usePositionChecker';
 
 function App() {
   const [showPupUp, setShowPopUp] = useState(false);
   const [clickData, setClickData] = useState('');
-  const { checkPosition } = positionChecker();
-  const [characters, setCharacters] = useState([
-    {
-      name: 'Rias Gremory',
-      found: false,
-      source: rias,
-    },
-    {
-      name: 'Lelouch Vi Britannia',
-      found: false,
-      source: lelouch,
-    },
-    {
-      name: 'Ulquiorra Cifer',
-      found: false,
-      source: ulquiorra,
-    },
-  ]);
+  const { checkPosition, setCharacters, characters } = usePositionChecker();
 
   const togglePopUp = () => setShowPopUp((prevState) => !prevState);
   const updateClickData = ({
