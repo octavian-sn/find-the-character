@@ -20,6 +20,7 @@ header {
   justify-content: space-around;
   align-items: center;
   max-width: 800px;
+  position: relative;
 }
 h1 {
   font-family: 'Delicious Handrawn', cursive;
@@ -43,6 +44,40 @@ h1 {
 }
 .characters-icon:hover {
   transform: rotateZ(15deg);
+}
+/* Characters drop-down toggled on */
+.header--character-pictures {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 64px;
+  right: 5%;
+  background-color: white;
+  border: 4px solid #2c3c48;
+  border-top: none;
+}
+.header--character-pictures div {
+  font-family: 'Delicious Handrawn';
+  color: #2c3c48;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 50px;
+  width: 120px;
+  font-size: small;
+  text-align: center;
+  padding: 0 8px;
+}
+@media screen and (min-width: 650px) {
+  .header--character-pictures div {
+    height: 6vw;
+    width: 13vw;
+    font-size: 1.4vw;
+  }
+}
+.header--character-pictures .character-face {
+  height: 90%;
 }
 
 /* Game Image Component */

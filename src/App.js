@@ -44,7 +44,7 @@ function App() {
     } else {
       setResultNotification(`That's not ${name}, try again!`);
     }
-    setTimeout(() => setResultNotification(null), 900);
+    setTimeout(() => setResultNotification(null), 1000);
   }
 
   return (
