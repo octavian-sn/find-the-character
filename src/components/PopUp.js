@@ -1,4 +1,4 @@
-function PopUp({ characters, clickData, checkPosition }) {
+function PopUp({ characters, clickData, characterSelect }) {
   const coordinates = {
     top: clickData.pageY,
     left: clickData.pageX,
@@ -8,7 +8,7 @@ function PopUp({ characters, clickData, checkPosition }) {
     .filter((item) => item.found === false)
     .map((item, index) => (
       <li
-        onClick={() => checkPosition(item.name, clickData)}
+        onClick={() => characterSelect(item.name, clickData)}
         key={index}
         id={item.name}
       >

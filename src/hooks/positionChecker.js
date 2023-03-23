@@ -1,7 +1,7 @@
-import { async } from '@firebase/util';
 import { getData, writeData, getCharacters } from '../firebase/config';
 
 export default function positionChecker() {
+  // Function used to add character positions to firebase
   function addCharacters({
     nativeEvent: { offsetX, offsetY },
     target: { width, height },
@@ -46,6 +46,8 @@ export default function positionChecker() {
   //     console.log(margin.left);
   //   }
   // }
+
+  // Check position using data from the click and percentages from firebase (getData)
   async function checkPosition(name, { offsetX, offsetY, height, width }) {
     try {
       const percentages = await getData(name);
@@ -61,7 +63,8 @@ export default function positionChecker() {
         offsetY > margin.top &&
         offsetY < margin.bottom
       )
-        return true;
+        return name;
+      else return false;
     } catch (e) {
       console.log(e);
     }

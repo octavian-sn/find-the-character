@@ -6,6 +6,7 @@ import positionChecker from './hooks/positionChecker';
 import rias from './assets/rias.png';
 import lelouch from './assets/lelouch.png';
 import ulquiorra from './assets/ulquiorra.png';
+import { async } from '@firebase/util';
 
 function App() {
   const [showPupUp, setShowPopUp] = useState(false);
@@ -44,8 +45,15 @@ function App() {
       offsetX,
       offsetY,
     });
-    // console.log(clickData);
   };
+
+  async function characterSelect(characterName, clickData) {
+    togglePopUp();
+    const foundCharacter = await checkPosition(characterName, clickData);
+    // If user selected the correct character
+    if (foundCharacter) console.log(foundCharacter);
+    else console.log('try again');
+  }
 
   return (
     <div id="app">
@@ -55,7 +63,7 @@ function App() {
         <PopUp
           characters={characters}
           clickData={clickData}
-          checkPosition={checkPosition}
+          characterSelect={characterSelect}
         />
       )}
     </div>
