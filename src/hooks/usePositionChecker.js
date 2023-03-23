@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { getData, writeData, getCharacters } from '../firebase/config';
+import { getData, writeData } from '../firebase/config';
 import rias from '../assets/rias.png';
 import lelouch from '../assets/lelouch.png';
 import ulquiorra from '../assets/ulquiorra.png';
@@ -86,8 +86,8 @@ export default function usePositionChecker() {
         offsetY > margin.top &&
         offsetY < margin.bottom
       )
-        return name;
-      else return false;
+        return [true, name];
+      else return [false, name];
     } catch (e) {
       console.log(e);
     }

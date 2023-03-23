@@ -7,6 +7,7 @@ import usePositionChecker from './hooks/usePositionChecker';
 function App() {
   const [showPupUp, setShowPopUp] = useState(false);
   const [clickData, setClickData] = useState('');
+  const [resultNotification, setResultNotification] = useState(null);
   const { checkPosition, setCharacters, characters } = usePositionChecker();
 
   const togglePopUp = () => setShowPopUp((prevState) => !prevState);
@@ -28,10 +29,22 @@ function App() {
 
   async function characterSelect(characterName, clickData) {
     togglePopUp();
-    const foundCharacter = await checkPosition(characterName, clickData);
+    const result = await checkPosition(characterName, clickData);
+    const [correct, name] = result;
     // If user selected the correct character
-    if (foundCharacter) console.log(foundCharacter);
-    else console.log('try again');
+    if (correct) {
+      // Set character's found => true
+      setCharacters((prevCharacters) =>
+        prevCharacters.map((item) => {
+          if (item.name === name) return { ...item, found: true };
+          return item;
+        })
+      );
+      setResultNotification(`Cool, you found ${name}!`);
+    } else {
+      setResultNotification(`That's not ${name}, try again!`);
+    }
+    setTimeout(() => setResultNotification(null), 900);
   }
 
   return (
@@ -44,6 +57,9 @@ function App() {
           clickData={clickData}
           characterSelect={characterSelect}
         />
+      )}
+      {resultNotification && (
+        <PopUp clickData={clickData} notification={resultNotification} />
       )}
     </div>
   );

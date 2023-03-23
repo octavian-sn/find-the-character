@@ -58,24 +58,21 @@ h1 {
   border-width: 4px 1px;
   background-color: rgb(255, 255, 255);
   position: absolute;
-  min-height: 10%;
   min-width: 10%;
-  top: 260px;
-  left: 110px;
+  font-size: 2vw;
+  font-family: 'Delicious Handrawn';
 }
 .pop-up li {
-  font-size: 2vw;
   list-style-type: none;
   padding: 3px;
   padding: 3px 10px;
-  font-family: 'Delicious Handrawn';
   cursor: pointer;
 }
 .pop-up li:hover {
   background-color: #2c3c4844;
 }
 @media screen and (max-width: 600px) {
-  .pop-up li {
+  .pop-up {
     font-size: 17px;
   }
 }
