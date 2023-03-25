@@ -9,6 +9,7 @@ function App() {
   const [showPupUp, setShowPopUp] = useState(false);
   const [clickData, setClickData] = useState('');
   const [resultNotification, setResultNotification] = useState(null);
+  const [showModal, setShowModal] = useState(false);
   const { checkPosition, setCharacters, characters } = usePositionChecker();
   const { seconds, minutes, toggleTimer } = useTimer();
 
@@ -33,7 +34,7 @@ function App() {
     togglePopUp();
     const result = await checkPosition(characterName, clickData);
     const [correct, name] = result;
-    // If user selected the correct character
+    // If user selected the correct character changed the found prop of character
     if (correct) {
       // Set character's found => true
       setCharacters((prevCharacters) =>
@@ -49,6 +50,13 @@ function App() {
     setTimeout(() => setResultNotification(null), 1000);
   }
 
+  useEffect(() => {
+    if (characters.every((character) => character.found === true)) {
+      toggleTimer();
+      setShowModal(true);
+    }
+  }, [characters]);
+
   return (
     <div id="app">
       <Header characters={characters} seconds={seconds} minutes={minutes} />
@@ -63,7 +71,6 @@ function App() {
       {resultNotification && (
         <PopUp clickData={clickData} notification={resultNotification} />
       )}
-      <button>Big Button</button>
     </div>
   );
 }

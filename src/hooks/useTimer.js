@@ -1,10 +1,6 @@
 import { useState, useEffect } from 'react';
 
 export default function useTimer() {
-  const [counter, setCounter] = useState({
-    minutes: 0,
-    seconds: 0,
-  });
   const [isRunning, setIsRunning] = useState(true);
   const [seconds, setSeconds] = useState(0);
   const [minutes, setMinutes] = useState(0);
@@ -26,7 +22,6 @@ export default function useTimer() {
   const toggleTimer = () => setIsRunning((prevState) => !prevState);
 
   return {
-    counter,
     seconds,
     minutes,
     toggleTimer,
