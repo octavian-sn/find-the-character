@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import GameImage from './components/GameImage';
 import Header from './components/Header';
 import PopUp from './components/PopUp';
 import usePositionChecker from './hooks/usePositionChecker';
+import useTimer from './hooks/useTimer';
 
 function App() {
   const [showPupUp, setShowPopUp] = useState(false);
   const [clickData, setClickData] = useState('');
   const [resultNotification, setResultNotification] = useState(null);
   const { checkPosition, setCharacters, characters } = usePositionChecker();
+  const { seconds, minutes, toggleTimer } = useTimer();
 
   const togglePopUp = () => setShowPopUp((prevState) => !prevState);
   const updateClickData = ({
@@ -49,7 +51,7 @@ function App() {
 
   return (
     <div id="app">
-      <Header characters={characters} />
+      <Header characters={characters} seconds={seconds} minutes={minutes} />
       <GameImage togglePopUp={togglePopUp} updateClickData={updateClickData} />
       {showPupUp && (
         <PopUp
@@ -61,6 +63,7 @@ function App() {
       {resultNotification && (
         <PopUp clickData={clickData} notification={resultNotification} />
       )}
+      <button>Big Button</button>
     </div>
   );
 }

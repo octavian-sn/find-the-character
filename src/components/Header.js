@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function Header({ characters }) {
+function Header({ characters, seconds, minutes }) {
   const [showCharacters, setShowCharacters] = useState(false);
   const togglePictures = () => setShowCharacters((prevState) => !prevState);
 
@@ -22,7 +22,11 @@ function Header({ characters }) {
       <div className="title">
         <h1>Tag'em! </h1>
       </div>
-      <div className="timer">1:26</div>
+      <div className="timer">
+        {minutes < 10 ? '0' : ''}
+        {minutes}:{seconds < 10 ? '0' : ''}
+        {seconds}
+      </div>
       <button onClick={togglePictures} className="characters-icon">
         {charactersLeft.length}
       </button>
