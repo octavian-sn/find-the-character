@@ -10,7 +10,7 @@ function App() {
   const [showPupUp, setShowPopUp] = useState(false);
   const [clickData, setClickData] = useState('');
   const [resultNotification, setResultNotification] = useState(null);
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
   const { checkPosition, setCharacters, characters } = usePositionChecker();
   const { seconds, minutes, toggleTimer } = useTimer();
 
