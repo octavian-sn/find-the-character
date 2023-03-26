@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/find-the-character/static/css/main.be7151e7.css",
+    "main.js": "/find-the-character/static/js/main.414e7d56.js",
+    "static/media/picture.jpg": "/find-the-character/static/media/picture.438174f856f2a51ca9d3.jpg",
+    "static/media/background.png": "/find-the-character/static/media/background.b775dafc336cd2ddf7d4.png",
+    "static/media/ulquiorra.png": "/find-the-character/static/media/ulquiorra.cfec5398bb4599642e87.png",
+    "static/media/lelouch.png": "/find-the-character/static/media/lelouch.5e5d1930476c7e6707ee.png",
+    "static/media/rias.png": "/find-the-character/static/media/rias.ac53b8ad1eb2432e0670.png",
+    "index.html": "/find-the-character/index.html",
+    "main.be7151e7.css.map": "/find-the-character/static/css/main.be7151e7.css.map",
+    "main.414e7d56.js.map": "/find-the-character/static/js/main.414e7d56.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.be7151e7.css",
+    "static/js/main.414e7d56.js"
+  ]
+}
