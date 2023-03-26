@@ -75,6 +75,7 @@ function Modal({ seconds, minutes }) {
               setPlayerName(e.target.value);
             }}
             value={playerName}
+            maxLength="14"
           ></input>
           <button onClick={updateScores}>SUBMIT</button>
         </div>
@@ -88,6 +89,7 @@ function Modal({ seconds, minutes }) {
             {minutes}:{seconds < 10 ? '0' : ''}
             {seconds}
           </p>
+          <button>NEW GAME</button>
         </div>
       )}
     </div>

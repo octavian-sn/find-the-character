@@ -148,7 +148,8 @@ header .timer {
 .nameInput input:focus {
   outline: none;
 }
-.nameInput button {
+.nameInput button,
+.scores button {
   border: none;
   font-size: 1.3rem;
   color: white;
@@ -178,6 +179,8 @@ header .timer {
 }
 .scores .scores-list li {
   margin-bottom: 3px;
+  /* max-width: 300px; */
+  /* overflow: hidden; */
 }
 @media screen and (min-width: 601px) {
   .scores {
