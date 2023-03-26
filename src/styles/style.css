@@ -112,3 +112,56 @@ header .timer {
     font-size: 17px;
   }
 }
+/* Modal */
+#modal {
+  background-color: #2c3c489c;
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 20%;
+  color: #134066;
+}
+.nameInput {
+  background-color: #c9efff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  gap: 6px;
+  font-family: 'Delicious Handrawn';
+  font-size: 1.5rem;
+}
+.nameInput input {
+  border: none;
+  margin-bottom: 4%;
+  height: 30px;
+  font-size: 1.5rem;
+  font-family: 'Delicious Handrawn';
+  text-align: center;
+  color: #134066;
+}
+.nameInput input:focus {
+  outline: none;
+}
+.nameInput button {
+  border: none;
+  font-size: 1.3rem;
+  color: white;
+  background-color: #134066;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+/* Desktop size */
+@media screen and (min-width: 601px) {
+  #modal {
+    padding-top: 20vh;
+  }
+  .nameInput,
+  .nameInput input {
+    font-size: 2rem;
+  }
+}

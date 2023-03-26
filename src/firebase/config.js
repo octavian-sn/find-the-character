@@ -23,6 +23,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+// Characters setting/getting data
 async function writeData(data) {
   const characterRef = collection(db, 'characters');
   try {
@@ -31,7 +32,6 @@ async function writeData(data) {
     console.error('Error adding document: ', e);
   }
 }
-
 async function getCharacters() {
   const querySnapshot = await getDocs(collection(db, 'characters'));
   let arr = [];
@@ -39,17 +39,25 @@ async function getCharacters() {
   console.log(arr);
   return arr;
 }
-
-// getCharacters();
-
-async function getData(name) {
-  const docRef = doc(db, 'characters', name);
+async function getData(name, collectionName = 'characters') {
+  const docRef = doc(db, collectionName, name);
   const docSnap = await getDoc(docRef);
   if (docSnap.exists()) {
     return docSnap.data();
   } else {
-    console.log('Error, no document.');
+    return 'Error, no document.';
   }
 }
 
-export { writeData, getData, getCharacters };
+// Highscores data
+async function setHighScores(data) {
+  const scoreRef = collection(db, 'scores');
+  try {
+    await setDoc(doc(scoreRef, 'High Scores'), data);
+  } catch (e) {
+    console.error('Error adding document: ', e);
+  }
+}
+
+// console.log(getData('High Scores', 'highScores'));
+export { writeData, getData, getCharacters, setHighScores };

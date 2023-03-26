@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import GameImage from './components/GameImage';
 import Header from './components/Header';
 import PopUp from './components/PopUp';
+import Modal from './components/Modal';
 import usePositionChecker from './hooks/usePositionChecker';
 import useTimer from './hooks/useTimer';
 
@@ -9,7 +10,7 @@ function App() {
   const [showPupUp, setShowPopUp] = useState(false);
   const [clickData, setClickData] = useState('');
   const [resultNotification, setResultNotification] = useState(null);
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(true);
   const { checkPosition, setCharacters, characters } = usePositionChecker();
   const { seconds, minutes, toggleTimer } = useTimer();
 
@@ -71,6 +72,7 @@ function App() {
       {resultNotification && (
         <PopUp clickData={clickData} notification={resultNotification} />
       )}
+      {showModal && <Modal seconds={seconds} minutes={minutes} />}
     </div>
   );
 }
