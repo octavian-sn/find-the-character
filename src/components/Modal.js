@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { getData, setHighScores } from '../firebase/config';
 
 function Modal({ seconds, minutes, newGame }) {
