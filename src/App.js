@@ -12,7 +12,7 @@ function App() {
   const [resultNotification, setResultNotification] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const { checkPosition, setCharacters, characters } = usePositionChecker();
-  const { seconds, minutes, toggleTimer } = useTimer();
+  const { seconds, minutes, toggleTimer, resetTimer } = useTimer();
 
   const togglePopUp = () => setShowPopUp((prevState) => !prevState);
   const updateClickData = ({
@@ -58,6 +58,15 @@ function App() {
     }
   }, [characters]);
 
+  const newGame = () => {
+    setShowModal(false);
+    resetTimer();
+    toggleTimer();
+    setCharacters((prevCharacters) =>
+      prevCharacters.map((character) => ({ ...character, found: false }))
+    );
+  };
+
   return (
     <div id="app">
       <Header characters={characters} seconds={seconds} minutes={minutes} />
@@ -72,7 +81,9 @@ function App() {
       {resultNotification && (
         <PopUp clickData={clickData} notification={resultNotification} />
       )}
-      {showModal && <Modal seconds={seconds} minutes={minutes} />}
+      {showModal && (
+        <Modal seconds={seconds} minutes={minutes} newGame={newGame} />
+      )}
     </div>
   );
 }

@@ -170,7 +170,7 @@ header .timer {
 /* Scores */
 .scores {
   background-color: #c9efff;
-  padding: 2px 16px;
+  padding: 6px 16px 12px 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -179,8 +179,6 @@ header .timer {
 }
 .scores .scores-list li {
   margin-bottom: 3px;
-  /* max-width: 300px; */
-  /* overflow: hidden; */
 }
 @media screen and (min-width: 601px) {
   .scores {
@@ -189,7 +187,6 @@ header .timer {
   }
 }
 .score-row .time {
-  justify-self: end;
-  align-self: end;
-  /* color: red; */
+  margin-left: 8px;
+  font-weight: bold;
 }

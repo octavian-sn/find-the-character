@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { getData, setHighScores } from '../firebase/config';
 
-function Modal({ seconds, minutes }) {
+function Modal({ seconds, minutes, newGame }) {
   const [displayNameInput, setDisplayNameInput] = useState(false);
   const [displayScores, setDisplayScores] = useState(false);
   const [scores, setScores] = useState([]);
@@ -27,7 +27,7 @@ function Modal({ seconds, minutes }) {
     setScores((prevScores) => {
       const newArr = [...prevScores];
       newArr.push({
-        name: playerName === '' ? 'Anonymous' : playerName,
+        name: playerName === '' ? 'DOE' : playerName,
         score: playerTime,
       });
       newArr.sort((a, b) => a.score - b.score);
@@ -58,7 +58,7 @@ function Modal({ seconds, minutes }) {
       }
       return (
         <li className="score-row" key={index}>
-          <span>{item.name}</span>{' '}
+          <span>{item.name.toUpperCase()}</span>{' '}
           <span className="time">{`${minutes}:${seconds}`}</span>
         </li>
       );
@@ -69,13 +69,13 @@ function Modal({ seconds, minutes }) {
     <div id="modal">
       {displayNameInput && (
         <div className="nameInput">
-          <p>Please enter your name for the high-scores</p>
+          <p>Please enter your initials for the high-scores</p>
           <input
             onChange={(e) => {
               setPlayerName(e.target.value);
             }}
             value={playerName}
-            maxLength="14"
+            maxLength="3"
           ></input>
           <button onClick={updateScores}>SUBMIT</button>
         </div>
@@ -89,7 +89,14 @@ function Modal({ seconds, minutes }) {
             {minutes}:{seconds < 10 ? '0' : ''}
             {seconds}
           </p>
-          <button>NEW GAME</button>
+          <button
+            onClick={() => {
+              newGame();
+              setDisplayScores(false);
+            }}
+          >
+            NEW GAME
+          </button>
         </div>
       )}
     </div>

@@ -20,10 +20,15 @@ export default function useTimer() {
   }, [isRunning, minutes, seconds]);
 
   const toggleTimer = () => setIsRunning((prevState) => !prevState);
+  const resetTimer = () => {
+    setSeconds(0);
+    setMinutes(0);
+  };
 
   return {
     seconds,
     minutes,
     toggleTimer,
+    resetTimer,
   };
 }
